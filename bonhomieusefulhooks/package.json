@@ -1,0 +1,28 @@
+{
+  "name": "@bonhomie/useful-hooks",
+  "version": "2.1.0",
+  "description": "A collection of clean, production-ready React hooks for everyday development.",
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": ["dist"],
+  "keywords": [
+    "react-hooks","usehook","react-use","custom-hooks","useful-hooks","hooks-library",
+    "react-utilities","react-tools","react-helper","react-utils","frontend-tools",
+    "browser-hooks","use-secure","use-clipboard","use-route-guard","bonhomie"
+  ],
+  "author": "Bonhomie",
+  "license": "MIT",
+  "scripts": {
+    "dev": "tsup src/index.js --watch --dts",
+    "build": "tsup src/index.js --format esm,cjs --dts",
+    "clean": "rm -rf dist"
+  },
+  "peerDependencies": {
+    "react": ">=17.0.0"
+  },
+  "devDependencies": {
+    "tsup": "^7.2.0",
+    "typescript": "^5.6.0"
+  }
+}

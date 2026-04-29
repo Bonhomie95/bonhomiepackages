@@ -1,0 +1,122 @@
+.bon-cloud-container {
+  position: relative;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.bon-dropzone {
+  border: 2px dashed #d0d7de;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease, transform 0.1s;
+  background: #f8fafc;
+}
+
+.bon-dropzone--active {
+  border-color: #3b82f6;
+  background: #e0ecff;
+  transform: scale(0.99);
+}
+
+.bon-dropzone-text {
+  color: #4b5563;
+  font-size: 0.95rem;
+}
+
+.bon-dropzone-highlight {
+  color: #2563eb;
+  font-weight: 600;
+}
+
+.bon-progress {
+  margin-top: 10px;
+  height: 6px;
+  border-radius: 999px;
+  background: #e5e7eb;
+  overflow: hidden;
+}
+
+.bon-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #2563eb, #4f46e5);
+  transition: width 0.2s ease;
+}
+
+.bon-errors {
+  margin-top: 8px;
+  font-size: 0.8rem;
+  color: #b91c1c;
+}
+
+.bon-error-item {
+  margin: 2px 0;
+}
+
+.bon-grid {
+  margin-top: 16px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+  gap: 10px;
+}
+
+.bon-item {
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #0f172a;
+}
+
+.bon-item-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.bon-remove {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  background: rgba(15, 23, 42, 0.85);
+  border: none;
+  border-radius: 999px;
+  color: #f9fafb;
+  cursor: pointer;
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+}
+
+.bon-item-warnings {
+  position: absolute;
+  bottom: 6px;
+  left: 6px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.bon-warning-badge {
+  background: rgba(248, 250, 252, 0.9);
+  color: #b45309;
+  border-radius: 999px;
+  padding: 2px 6px;
+  font-size: 0.65rem;
+}
+
+.bon-toast {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  background: #111827;
+  color: #f9fafb;
+  padding: 10px 14px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.3);
+  z-index: 9999;
+}

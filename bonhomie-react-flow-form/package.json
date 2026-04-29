@@ -1,0 +1,31 @@
+{
+  "name": "@bonhomie/react-flow-form",
+  "version": "2.1.0",
+  "description": "A modern multi-step form engine for React: validation, transitions, progress bar, localStorage persistence, restore, and clean APIs.",
+  "type": "module",
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
+  "files": ["dist"],
+  "sideEffects": false,
+  "scripts": {
+    "build": "tsup src/index.js --format esm,cjs --dts --minify",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "react","forms","multi-step-form","stepper","wizard","onboarding",
+    "checkout","kyc","registration-flow","react-flow-form","form-builder",
+    "react-hooks","form-validation","ui-wizard","form-wizard","step-form",
+    "react-flow","flowform","localstorage","state-persistence","bonhomie"
+  ],
+  "peerDependencies": {
+    "react": ">=17.0.0",
+    "react-dom": ">=17.0.0"
+  },
+  "devDependencies": {
+    "tsup": "^8.5.1",
+    "typescript": "^5.9.3",
+    "react": "^18.3.0",
+    "react-dom": "^18.3.0"
+  },
+  "license": "MIT"
+}

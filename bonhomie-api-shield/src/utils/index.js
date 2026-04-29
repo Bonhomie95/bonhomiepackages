@@ -1,0 +1,1 @@
+export { safe } from './safe.js';

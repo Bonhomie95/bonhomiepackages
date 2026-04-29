@@ -1,0 +1,44 @@
+{
+  "name": "@bonhomie/env-kit",
+  "version": "1.0.0",
+  "description": "Typed, validated environment variables for Node.js. Schema-based, collects all errors at once, zero dependencies.",
+  "type": "module",
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "sideEffects": false,
+  "scripts": {
+    "build": "tsup src/index.js --format esm,cjs --dts",
+    "prepublishOnly": "npm run build",
+    "test": "node --test test/env-kit.test.js"
+  },
+  "keywords": [
+    "env",
+    "environment",
+    "dotenv",
+    "config",
+    "validation",
+    "typed-env",
+    "env-validation",
+    "schema",
+    "startup",
+    "node",
+    "backend",
+    "bonhomie"
+  ],
+  "author": "Bonhomie",
+  "license": "MIT",
+  "devDependencies": {
+    "tsup": "^8.5.1",
+    "typescript": "^5.9.3"
+  }
+}

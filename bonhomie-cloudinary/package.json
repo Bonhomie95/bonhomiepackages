@@ -1,0 +1,48 @@
+{
+  "name": "@bonhomie/cloudinary-super-uploader",
+  "version": "2.1.0",
+  "type": "module",
+  "description": "A powerful React + Node Cloudinary toolkit with drag & drop, browser compression, EXIF checks, duplicate detection, signed uploads, and more.",
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": ["dist"],
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./node": {
+      "import": "./dist/node/index.js",
+      "require": "./dist/node/index.cjs"
+    }
+  },
+  "keywords": [
+    "cloudinary","image-upload","react-upload","drag-drop-upload","browser-compression",
+    "exif","duplicate-detection","signed-upload","image-toolkit","sharp","cloudinary-sdk",
+    "upload-component","react-hooks","file-upload","bonhomie"
+  ],
+  "scripts": {
+    "build": "tsup",
+  "prepublishOnly": "npm run build",
+    "test": "echo \"No tests yet\""
+  },
+  "author": "Bonhomie",
+  "license": "MIT",
+  "peerDependencies": {
+    "react": ">=17.0.0"
+  },
+  "dependencies": {
+    "exif-parser": "^0.1.12"
+  },
+  "optionalDependencies": {
+    "cloudinary": "^2.8.0",
+    "image-hash": "^7.0.1",
+    "sharp": "^0.34.5"
+  },
+  "devDependencies": {
+    "tsup": "^8.5.1",
+    "typescript": "^5.9.3"
+  }
+}

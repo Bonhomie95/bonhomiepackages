@@ -1,0 +1,48 @@
+{
+  "name": "@bonhomie/react-security",
+  "version": "2.1.0",
+  "description": "A frontend security layer for React: devtools detection, screenshot blocking, anti-iframe, tamper detection, watermarking, and more.",
+  "type": "module",
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "files": ["dist"],
+  "sideEffects": false,
+  "scripts": {
+    "build": "tsup src/index.js --format esm,cjs --minify --dts-resolve",
+    "prepublishOnly": "npm run build",
+    "test": "echo \"No tests yet\" && exit 0"
+  },
+  "keywords": [
+    "react","react-security","security","frontend-security","devtools-detect",
+    "anti-screenshot","screenshot-block","copy-protection","content-protection",
+    "anti-iframe","clickjacking","route-guard","tamper-detection","anti-tamper",
+    "vpn-detection","watermark","dynamic-watermark","exam-security","fintech-security",
+    "cheat-prevention","fraud-prevention","ai-screenshot-detection","keystroke-tamper",
+    "ghosting-detect","anti-debug","debug-protection","browser-security","bonhomie"
+  ],
+  "author": "Bonhomie",
+  "license": "MIT",
+  "peerDependencies": {
+    "react": ">=17.0.0",
+    "react-dom": ">=17.0.0",
+    "react-router-dom": ">=6.0.0"
+  },
+  "peerDependenciesMeta": {
+    "react-router-dom": { "optional": true }
+  },
+  "devDependencies": {
+    "react": "^18.3.0",
+    "react-dom": "^18.3.0",
+    "react-router-dom": "^6.0.0",
+    "tsup": "^8.5.1",
+    "typescript": "^5.9.3"
+  }
+}

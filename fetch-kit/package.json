@@ -1,0 +1,49 @@
+{
+  "name": "@bonhomie/fetch-kit",
+  "version": "1.0.0",
+  "description": "Smart fetch wrapper for React and Node: auth token injection, token refresh on 401, retry with backoff, timeout, interceptors, and consistent errors.",
+  "type": "module",
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "sideEffects": false,
+  "scripts": {
+    "build": "tsup src/index.js --format esm,cjs --dts",
+    "prepublishOnly": "npm run build",
+    "test": "node --test test/fetch-kit.test.js"
+  },
+  "keywords": [
+    "fetch",
+    "http",
+    "api-client",
+    "axios-alternative",
+    "fetch-wrapper",
+    "retry",
+    "timeout",
+    "token-refresh",
+    "interceptors",
+    "react",
+    "node",
+    "browser",
+    "auth",
+    "jwt",
+    "api",
+    "rest",
+    "bonhomie"
+  ],
+  "author": "Bonhomie",
+  "license": "MIT",
+  "devDependencies": {
+    "tsup": "^8.5.1",
+    "typescript": "^5.9.3"
+  }
+}

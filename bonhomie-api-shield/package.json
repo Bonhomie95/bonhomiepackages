@@ -1,0 +1,50 @@
+{
+  "name": "@bonhomie/api-shield",
+  "version": "2.1.0",
+  "description": "A modern Node.js API utility toolkit: rate limiter, fingerprinting, validators, caching, logger, error handler, and cron helpers.",
+  "files": ["dist"],
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "scripts": {
+    "dev": "tsup --watch",
+    "build": "tsup src/index.js --format esm,cjs --dts"
+  },
+  "keywords": [
+    "security","api-security","node-security","backend-security","express-security",
+    "csrf-protection","jwt-auth","xss-protection","sqli-detection","rate-limiter",
+    "anti-replay","hmac","argon2","password-hashing","input-sanitization","attack-detection",
+    "bot-detection","device-fingerprint","ddos-protection","ip-blocking","express-middleware",
+    "request-logger","rbac","permissions","role-based-access","redis-cache","cron-jobs",
+    "api-toolkit","backend-toolkit","node-utils","request-validation","session-security"
+  ],
+  "author": "Bonhomie",
+  "license": "MIT",
+  "peerDependencies": {
+    "express": ">=4.0.0"
+  },
+  "peerDependenciesMeta": {
+    "express": { "optional": true }
+  },
+  "dependencies": {
+    "argon2": "^0.44.0",
+    "cookie-parser": "^1.4.7",
+    "cron": "^3.1.0",
+    "ioredis": "^5.3.2",
+    "jsonwebtoken": "^9.0.2",
+    "ua-parser-js": "^1.0.37",
+    "xss": "^1.0.15"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "express": "^5.1.0",
+    "tsup": "^8.0.1",
+    "typescript": "^5.9.3"
+  }
+}
