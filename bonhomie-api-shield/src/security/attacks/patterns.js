@@ -1,7 +1,7 @@
 // SQL Injection patterns
 export const SQLI_PATTERNS = [
   /(\b)(select|update|union|insert|delete|drop|alter|create|exec|sleep)(\b)/i,
-  /(\%27)|(')|(--)|(\%23)|(#)/i,
+  /(\%27)|(')|(--)|(\\%23)|(#)/i,
   /((\%3D)|(=))[^\n]*((\%27)|(')|(--))/i,
   /\bOR\s+1=1\b/i,
   /UNION\s+SELECT/i,
@@ -27,11 +27,15 @@ export const PATH_TRAVERSAL_PATTERNS = [
 ];
 
 // Suspicious encodings
-// Note: %2f (encoded slash) has been intentionally removed — it appears
-// legitimately in OAuth redirect URIs, REST paths, and many APIs, causing
-// excessive false positives. Path traversal via encoded slashes is already
-// caught by PATH_TRAVERSAL_PATTERNS above.
+// FIX (v2.1.1): /%00/ only matches the literal string "%00" (URL-encoded form).
+// When Express URL-decodes query/body values, null bytes arrive as the actual
+// \x00 character — which /%00/ would NOT catch. Added /\x00/ to cover both cases.
+//
+// %2f (encoded slash) intentionally excluded — it appears legitimately in OAuth
+// redirect URIs, REST paths, etc. Path traversal via encoded slashes is already
+// covered by PATH_TRAVERSAL_PATTERNS above.
 export const ENCODING_ATTACKS = [
-  /%00/, // Null byte
-  /%25/i, // Double-encoded %
+  /%00/,    // URL-encoded null byte (raw / not-yet-decoded strings)
+  /\x00/,   // Actual null byte (URL-decoded strings from req.query/body)
+  /%25/i,   // Double-encoded %
 ];

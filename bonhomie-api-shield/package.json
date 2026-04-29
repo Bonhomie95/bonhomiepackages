@@ -1,6 +1,6 @@
 {
   "name": "@bonhomie/api-shield",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "A modern Node.js API utility toolkit: rate limiter, fingerprinting, validators, caching, logger, error handler, and cron helpers.",
   "files": ["dist"],
   "main": "dist/index.cjs",

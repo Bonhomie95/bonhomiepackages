@@ -11,29 +11,43 @@ function matchAny(str, patterns) {
   return patterns.some((re) => re.test(str));
 }
 
+/**
+ * Recursively extract all string values from a value (object/array/primitive).
+ * FIX (v2.1.1): The original implementation only read Object.values() one level
+ * deep. An attacker could hide injection payloads in nested fields:
+ *
+ *   req.body = { user: { name: "'; DROP TABLE users; --" } }
+ *
+ * and the outer body scan would extract only the object { name: "..." } —
+ * a non-string — leaving the nested string completely unchecked.
+ *
+ * This fix walks the entire object graph so nested payloads are caught.
+ */
+function collectStrings(value, out = []) {
+  if (typeof value === 'string') {
+    out.push(value);
+  } else if (Array.isArray(value)) {
+    for (const item of value) collectStrings(item, out);
+  } else if (value && typeof value === 'object') {
+    for (const v of Object.values(value)) collectStrings(v, out);
+  }
+  return out;
+}
+
 function extractStrings(req) {
   const list = [];
-
-  for (const v of Object.values(req.query || {})) {
-    if (typeof v === 'string') list.push(v);
-  }
-  for (const v of Object.values(req.params || {})) {
-    if (typeof v === 'string') list.push(v);
-  }
-  if (req.body && typeof req.body === 'object') {
-    for (const v of Object.values(req.body)) {
-      if (typeof v === 'string') list.push(v);
-    }
-  }
-
+  collectStrings(req.query  || {}, list);
+  collectStrings(req.params || {}, list);
+  collectStrings(req.body   || {}, list);
   return list;
 }
 
 /**
  * Detect multiple types of injection / traversal attacks.
  *
- * Reasons are collected as a Set to avoid duplicates when multiple
- * fields contain the same attack pattern.
+ * v2.1:   reasons are deduplicated (Set) so the same attack type is not
+ *         reported multiple times just because it appeared in several fields.
+ * v2.1.1: nested body objects are now fully scanned (see collectStrings above).
  *
  * @param {any} req
  * @returns {{ ip: string|null; userAgent: string; score: number; isAttack: boolean; reasons: string[] }}
@@ -42,8 +56,6 @@ export function detectAttack(req) {
   const ip = getClientIp(req);
   const ua = req.headers['user-agent'] || '';
 
-  // Use a Set so the same reason isn't reported multiple times just
-  // because multiple fields matched the same pattern.
   const reasonSet = new Set();
   let score = 0;
 
